@@ -22,9 +22,9 @@ class SongsController < Sinatra::Base
     @song = Song.create(:name => params[:song][:name])
 
     artist_entry = params[:song][:artist]
-    if !Artist.find_by(:name => artist_entry)
-      #artist = Artist.find_by(:name => artist_entry)
-    #else
+    if Artist.find_by(:name => artist_entry)
+      artist = Artist.find_by(:name => artist_entry)
+    else
       artist = Artist.create(:name => artist_entry)
     end
     @song.artist = artist
